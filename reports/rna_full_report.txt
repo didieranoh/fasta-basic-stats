@@ -1,0 +1,56 @@
+=== FASTA Report for /Users/didiermandi/fasta_basic_stats/rna.fna ===
+
+Total sequences: 26
+Headers unique: True
+
+Sequence Length Statistics:
+  min: 2003
+  max: 2658
+  mean: 2455.076923076923
+  median: 2523.5
+
+Overall GC content: 52.61%
+
+GC content per sequence:
+  NM_000546.6 TP53 [organism=Homo sapiens] [GeneID=7157] [transcript=1]: 53.38%
+  NM_001126112.3 TP53 [organism=Homo sapiens] [GeneID=7157] [transcript=2]: 53.37%
+  NM_001126113.3 TP53 [organism=Homo sapiens] [GeneID=7157] [transcript=4]: 52.95%
+  NM_001126114.3 TP53 [organism=Homo sapiens] [GeneID=7157] [transcript=3]: 52.51%
+  NM_001126115.2 TP53 [organism=Homo sapiens] [GeneID=7157] [transcript=5]: 51.92%
+  NM_001126116.2 TP53 [organism=Homo sapiens] [GeneID=7157] [transcript=6]: 50.94%
+  NM_001126117.2 TP53 [organism=Homo sapiens] [GeneID=7157] [transcript=7]: 51.43%
+  NM_001126118.2 TP53 [organism=Homo sapiens] [GeneID=7157] [transcript=8]: 53.59%
+  NM_001276695.3 TP53 [organism=Homo sapiens] [GeneID=7157] [transcript=4]: 52.95%
+  NM_001276696.3 TP53 [organism=Homo sapiens] [GeneID=7157] [transcript=3]: 52.51%
+  NM_001276697.3 TP53 [organism=Homo sapiens] [GeneID=7157] [transcript=5]: 51.92%
+  NM_001276698.3 TP53 [organism=Homo sapiens] [GeneID=7157] [transcript=6]: 50.94%
+  NM_001276699.3 TP53 [organism=Homo sapiens] [GeneID=7157] [transcript=7]: 51.43%
+  NM_001276760.3 TP53 [organism=Homo sapiens] [GeneID=7157] [transcript=1]: 53.38%
+  NM_001276761.3 TP53 [organism=Homo sapiens] [GeneID=7157] [transcript=2]: 53.37%
+  NM_001407262.1 TP53 [organism=Homo sapiens] [GeneID=7157] [transcript=9]: 53.27%
+  NM_001407263.1 TP53 [organism=Homo sapiens] [GeneID=7157] [transcript=9]: 53.27%
+  NM_001407264.1 TP53 [organism=Homo sapiens] [GeneID=7157] [transcript=10]: 52.78%
+  NM_001407265.1 TP53 [organism=Homo sapiens] [GeneID=7157] [transcript=10]: 52.78%
+  NM_001407266.1 TP53 [organism=Homo sapiens] [GeneID=7157] [transcript=11]: 52.79%
+  NM_001407267.1 TP53 [organism=Homo sapiens] [GeneID=7157] [transcript=11]: 52.79%
+  NM_001407268.1 TP53 [organism=Homo sapiens] [GeneID=7157] [transcript=12]: 52.50%
+  NM_001407269.1 TP53 [organism=Homo sapiens] [GeneID=7157] [transcript=12]: 52.50%
+  NM_001407270.1 TP53 [organism=Homo sapiens] [GeneID=7157] [transcript=13]: 51.96%
+  NM_001407271.1 TP53 [organism=Homo sapiens] [GeneID=7157] [transcript=13]: 51.96%
+  NR_176326.1 TP53 [organism=Homo sapiens] [GeneID=7157] [transcript=14]: 53.48%
+
+Nucleotide Composition:
+Counts:
+  A: 13812
+  C: 17870
+  T: 16438
+  G: 15712
+  N: 0
+Proportions:
+  A: 0.22
+  C: 0.28
+  T: 0.26
+  G: 0.25
+  N: 0.00
+
+=== End of Report ===
