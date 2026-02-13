@@ -1,0 +1,20 @@
+USAGE
+Basic Command
+
+./fasta-basic-stats_cli.py -i path/to/input.fasta -o custum/name
+
+Arguments:
+-i / --input → required: Path to the FASTA file
+-o / --output → Optional: Custom base name for the report files
+
+
+This will:
+Print a full report to the terminal
+Save a TXT report named: custom/name.txt in the same folder as the input file
+
+You can file an example .fna file in Example files
+
+Notes
+Reports are saved in the same directory as the input FASTA file by default
+Use the -o option to customize the report name
+Ensure your FASTA files are properly formatted to avoid errors
