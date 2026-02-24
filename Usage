@@ -1,7 +1,33 @@
 USAGE
-Basic Command
 
-./fasta-basic-stats_cli.py -i path/to/input.fasta -o custum/name
+Installation and Setup
+Before using FBS (formerly fasta-basic-stats), you need to download and install the package. Follow these steps:
+
+1. Clone or download the repository from GitHub:
+Run
+git clone https://github.com/didieranoh/fasta_basic_stats.git
+cd fasta_basic_stats
+
+2. (Optional but recommended) Create a Python virtual environment:
+Run
+python3 -m venv venv
+source venv/bin/activate      # Mac/Linux
+venv\Scripts\activate         # Windows
+
+3. Install the package in editable mode so you can run it as a command-line tool:
+Run
+pip install -e .
+
+4. Check Installation worked
+Run 
+fbs --help
+
+
+BASIC COMMAND USGAE
+
+fbs -i path/to/input.fasta
+
+or fbs -i path/to/input.fasta  -o custum/name 
 
 Arguments:
 -i / --input → required: Path to the FASTA file
@@ -12,7 +38,7 @@ This will:
 Print a full report to the terminal
 Save a TXT report named: custom/name.txt in the same folder as the input file
 
-You can file an example .fna file in Example files
+You can find an example .fna file in Example files
 
 Notes
 Reports are saved in the same directory as the input FASTA file by default

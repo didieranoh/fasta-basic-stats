@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="fasta-basic-stats",
+    name="fbs",
     version="0.1.0",
     description="Command-line tool to analyze FASTA files and generate comprehensive reports",
     author="Musi Anoh Didier Mandi",
@@ -12,7 +12,7 @@ setup(
     install_requires=[],
     entry_points={
         "console_scripts": [
-            "fasta-basic-stats=fasta_tool.cli:main",
+            "fbs=fasta_tool.fasta_basic_stats_cli:main",
         ],
     },
     classifiers=[
