@@ -1,71 +1,79 @@
+#!/usr/bin/env python3
 import statistics
 from collections import Counter
 
-def read_fasta(filepath):
-    records = []
-    header = None
-    seq_chunks = []
-
+def read_fasta_stream(filepath):
+    """Generator to read sequences one by one from a FASTA file."""
+    header, seq = None, []
     with open(filepath, "r") as f:
         for line in f:
-            line = line.strip()
-            if not line:
-                continue
-
+            line = line.rstrip()
             if line.startswith(">"):
-                if header is not None:
-                    records.append((header, "".join(seq_chunks)))
+                if header:
+                    yield header, "".join(seq)
                 header = line[1:]
-                seq_chunks = []
+                seq = []
             else:
-                seq_chunks.append(line.upper())
+                seq.append(line)
+        if header:
+            yield header, "".join(seq)
 
-        if header is not None:
-            records.append((header, "".join(seq_chunks)))
+def count_sequences(filepath):
+    count = 0
+    for _ in read_fasta_stream(filepath):
+        count += 1
+    return count
 
-    return records
+def check_unique_headers(filepath):
+    seen = set()
+    for header, _ in read_fasta_stream(filepath):
+        if header in seen:
+            return False
+        seen.add(header)
+    return True
 
-def count_sequences(records):
-    return len(records)
+def find_duplicate_headers(filepath):
+    seen = set()
+    duplicates = []
+    for header, _ in read_fasta_stream(filepath):
+        if header in seen:
+            duplicates.append(header)
+        else:
+            seen.add(header)
+    return duplicates
 
-def check_unique_headers(records):
-    headers = [h for h, _ in records]
-    return len(headers) == len(set(headers))
+def sequence_length_stats(filepath):
+    min_len = float("inf")
+    max_len = 0
+    total_len = 0
+    count = 0
+    for _, seq in read_fasta_stream(filepath):
+        l = len(seq)
+        min_len = min(min_len, l)
+        max_len = max(max_len, l)
+        total_len += l
+        count += 1
+    mean_len = total_len / count if count else 0
+    return {"min": min_len, "max": max_len, "mean": mean_len, "count": count}
 
-def find_duplicate_headers(records):
-    headers = [h for h, _ in records]
-    return [h for h, c in Counter(headers).items() if c > 1]
+def overall_gc_content(filepath):
+    total_gc = 0
+    total_len = 0
+    for _, seq in read_fasta_stream(filepath):
+        total_gc += seq.count("G") + seq.count("C")
+        total_len += len(seq)
+    return (total_gc / total_len * 100) if total_len else 0
 
-def sequence_length_stats(records):
-    lengths = [len(seq) for _, seq in records]
-    return {
-        "min": min(lengths),
-        "max": max(lengths),
-        "mean": statistics.mean(lengths),
-        "median": statistics.median(lengths),
-    }
+def gc_per_sequence(filepath):
+    for header, seq in read_fasta_stream(filepath):
+        gc = (seq.count("G") + seq.count("C")) / len(seq) * 100 if seq else 0
+        yield header, gc
 
-def gc_content(sequence):
-    sequence = sequence.upper()
-    g = sequence.count("G")
-    c = sequence.count("C")
-    atgc = sum(sequence.count(b) for b in "ATGC")
-    if atgc == 0:
-        return 0.0
-    return (g + c) / atgc * 100
-
-def overall_gc_content(records):
-    all_seq = "".join(seq for _, seq in records)
-    return gc_content(all_seq)
-
-def gc_per_sequence(records):
-    return [(header, gc_content(seq)) for header, seq in records]
-
-def nucleotide_composition(records):
-    counts = {"A": 0, "C": 0, "T": 0, "G": 0, "N": 0}
-    for _, seq in records:
-        for base in counts:
-            counts[base] += seq.count(base)
-    total = sum(counts.values())
-    proportions = {b: c / total for b, c in counts.items()}
-    return counts, proportions
+def nucleotide_composition(filepath):
+    counts = Counter()
+    total_len = 0
+    for _, seq in read_fasta_stream(filepath):
+        counts.update(seq)
+        total_len += len(seq)
+    proportions = {base: counts[base] / total_len if total_len else 0 for base in "ACGT"}
+    return dict(counts), proportions
