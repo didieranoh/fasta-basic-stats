@@ -23,7 +23,7 @@ A lightweight command-line Python tool to analyze FASTA files and generate compr
 Clone the repository and install locally:
 
 ```bash
-git clone git@github.com:didieranoh/fasta-basic-stats.git
+git clone https://github.com/didieranoh/fasta-basic-stats.git
 cd fasta-basic-stats
 pip install .
 
